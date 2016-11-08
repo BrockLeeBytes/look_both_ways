@@ -1,0 +1,4 @@
+module IntersectionsHelper
+
+	
+end
