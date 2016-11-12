@@ -28,16 +28,8 @@ class IntersectionsController < ApplicationController
   private
 
   	def generate_streets(st1, st2)
-  		st1 = 
-  		a = [st1.downcase, st2.downcase].sort
+  		a = [st1, st2].sort
   		"#{a[0]} and #{a[1]}" 
-  	end
-
-  	# String should be street parameter from user input
-  	# Each street will be passed through to be given
-  	# standard capitalization. 
-  	def standardize_street_name(str)
-  		str.downcase.split.map(&:capitalize).join(' ')
   	end
 
   	# Fix this method. Needs to use method above
@@ -47,6 +39,6 @@ class IntersectionsController < ApplicationController
   																										 :city, :state)
   		streets = generate_streets(permitted[:street_one], permitted[:street_two]) 
   		new_hash = { streets: streets}
-  		new_hash.merge(params[:intersection])
+  		permitted.merge(new_hash)
   	end
 end
