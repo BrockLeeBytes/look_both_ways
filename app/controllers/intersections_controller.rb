@@ -18,7 +18,7 @@ class IntersectionsController < ApplicationController
   end
 
   def maps_url
-  	search = @intersection.streets
+  	search = generate_search(@intersection.street_one,@intersection.street_two)
   	search = search.split.join('+')
   	search = "#{search},#{@intersection.city}+#{@intersection.state}"
   	"https://www.google.com/maps/embed/v1/place?key=#{ENV['GMAPS_API_KEY']}&q=#{search}"
@@ -27,7 +27,7 @@ class IntersectionsController < ApplicationController
 
   private
 
-  	def generate_streets(st1, st2)
+  	def generate_search(st1, st2)
   		a = [st1, st2].sort
   		"#{a[0]} and #{a[1]}" 
   	end
@@ -37,7 +37,7 @@ class IntersectionsController < ApplicationController
   		permitted = params.require(:intersection).permit(:street_one,
   																										 :street_two,
   																										 :city, :state)
-  		streets = generate_streets(permitted[:street_one], permitted[:street_two]) 
+  		streets = generate_search(permitted[:street_one], permitted[:street_two]) 
   		new_hash = { streets: streets}
   		permitted.merge(new_hash)
   	end

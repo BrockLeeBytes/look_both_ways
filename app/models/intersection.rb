@@ -21,6 +21,15 @@ class Intersection < ApplicationRecord
 		status = data_hash['status']
 		if status != 'OK' || results['types'][0] != 'intersection'
 			errors.add(:intersection, 'must exist')
+		else
+			set_formatted_address(results['formatted_address'])
 		end
+	end
+
+	def set_formatted_address(address)
+		self.formatted_address = address
+		address_array = address.split(',')
+		self.streets = address_array[0]
+		self.city = address_array[1]
 	end
 end
