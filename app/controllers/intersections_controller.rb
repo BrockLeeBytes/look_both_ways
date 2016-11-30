@@ -2,6 +2,7 @@ class IntersectionsController < ApplicationController
   
   def new
   @intersection = Intersection.new
+  @states = State.all
   end
 
   def create

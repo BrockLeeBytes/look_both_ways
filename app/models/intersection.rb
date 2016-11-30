@@ -1,4 +1,6 @@
 class Intersection < ApplicationRecord
+	belongs_to :state
+	accepts_nested_attributes_for :state
 	validate :intersection_must_exist
 
 	require 'rest-client'

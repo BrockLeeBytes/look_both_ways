@@ -1,0 +1,23 @@
+<h1>Add Intersection</h1>
+<div class='row'>
+	<div class='col-md-6 col-md-offset-3'>
+		<%= form_for @state, url: createintersection_path do |f| %>
+
+			<%= select_tag :postal_code, options_for_select(@states.collect {|s| [s.postal_code]}) %>
+
+				<%=fields_for :intersection do |ff| %>
+					<%= ff.label :street_one %>
+					<%= ff.text_field :street_one %>
+
+					<%= ff.label :street_two %>
+					<%= ff.text_field :street_two %>
+
+					<%= ff.label :city %>
+					<%= ff.text_field :city %>
+
+					<% end %>
+
+			<%= f.submit 'Create Intersection', class: 'btn btn-primary'  %>
+		<% end %>
+	</div>
+</div>

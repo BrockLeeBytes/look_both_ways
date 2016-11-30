@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161116195939) do
+ActiveRecord::Schema.define(version: 20161117030352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,12 +18,13 @@ ActiveRecord::Schema.define(version: 20161116195939) do
   create_table "intersections", force: :cascade do |t|
     t.string   "streets"
     t.string   "city"
-    t.string   "state"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "street_one"
     t.string   "street_two"
     t.string   "formatted_address"
+    t.integer  "state_id"
+    t.index ["state_id"], name: "index_intersections_on_state_id", using: :btree
   end
 
   create_table "states", force: :cascade do |t|
@@ -43,4 +44,5 @@ ActiveRecord::Schema.define(version: 20161116195939) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "intersections", "states"
 end

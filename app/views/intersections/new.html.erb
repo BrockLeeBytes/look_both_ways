@@ -11,8 +11,7 @@
 			<%= f.label :city %>
 			<%= f.text_field :city %>
 
-			<%= f.label :state %>
-			<%= f.text_field :state %>
+			<%= select_tag :state, options_for_select(@states.collect {|s| [s.postal_code]}) %>
 
 			<%= f.submit 'Create Intersection', class: 'btn btn-primary'  %>
 		<% end %>
