@@ -14,7 +14,7 @@ class Intersection < ApplicationRecord
 	end
 
 	def search_parameters
-		search = "#{self.streets.split.join('+')},+#{self.city.split.join('+')},+#{self.state}"
+		search = "#{self.street_one.split.join('+')}+and+#{self.street_two.split.join('+')},+#{self.city.split.join('+')},+#{self.state.postal_code}"
 	end
 
 	def intersection_must_exist
@@ -31,7 +31,6 @@ class Intersection < ApplicationRecord
 	def set_formatted_address(address)
 		self.formatted_address = address
 		address_array = address.split(',')
-		self.streets = address_array[0]
-		self.city = address_array[1]
+		self.city = address_array[1].strip
 	end
 end

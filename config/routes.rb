@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	post '/addintersection', to: 'intersections#create'
 	get '/states', to: 'states#index'
 	get '/createintersection', to: 'states#new'
-	post 'createintersection', to: 'states#create_intersection'
+	post '/createintersection', to: 'states#create_intersection'
 
 	resources :users, :intersections
 end
