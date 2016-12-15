@@ -1,0 +1,3 @@
+<% @states.sort.each do |f| %>
+	<%= link_to f.name, state_path(f.name)  %>
+<% end %>

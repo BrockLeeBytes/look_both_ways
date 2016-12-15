@@ -1,0 +1,3 @@
+<% @state.cities.each do |f| %>
+	<%= link_to f, :controller => 'intersections', :action => 'index', :id => f, :id2 => @state.id %>
+<% end %>

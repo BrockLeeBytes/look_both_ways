@@ -1,9 +1,11 @@
 class StatesController < ApplicationController
 
 	def index
+		@states = State.all
 	end
 
 	def show
+		@state = State.find_by(name: params[:id])
 	end
 
 	def new

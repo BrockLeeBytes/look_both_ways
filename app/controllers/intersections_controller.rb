@@ -5,6 +5,10 @@ class IntersectionsController < ApplicationController
   @states = State.all
   end
 
+  def index
+    @intersections = Intersection.where(state_id: params[:id2], city: params[:id])
+  end
+
   def create
   	@intersection = Intersection.new(intersection_params)
   	if @intersection.save
