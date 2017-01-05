@@ -1,4 +1,6 @@
 class Intersection < ApplicationRecord
+	has_many :reviews
+	has_many :users, :through => :reviews
 	belongs_to :state
 	accepts_nested_attributes_for :state
 	validate :intersection_must_exist

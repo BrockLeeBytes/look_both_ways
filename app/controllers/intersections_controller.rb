@@ -20,6 +20,8 @@ class IntersectionsController < ApplicationController
 
   def show
   	@intersection = Intersection.find(params[:id])
+    @review = current_user.reviews.build if logged_in?
+    @reviews = @intersection.reviews
   end
 
   def maps_url
