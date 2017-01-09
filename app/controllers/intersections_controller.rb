@@ -14,7 +14,7 @@ class IntersectionsController < ApplicationController
   	if @intersection.save
   		redirect_to @intersection
   	else
-  		render :new
+  		redirect_to :back
   	end
   end
 

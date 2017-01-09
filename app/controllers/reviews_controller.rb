@@ -16,6 +16,6 @@ class ReviewsController < ApplicationController
 	private
 
 		def review_params
-			params.require(:review).permit(:body, :intersection_id)
+			params.require(:review).permit(:body, :rating, :intersection_id)
 		end
 end

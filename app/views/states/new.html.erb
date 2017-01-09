@@ -3,7 +3,8 @@
 	<div class='col-md-6 col-md-offset-3'>
 		<%= form_for @state, url: createintersection_path do |f| %>
 
-			<%= select_tag :postal_code, options_for_select(@states.collect {|s| [s.postal_code]}) %>
+		<%= render 'shared/error_messages', object: f.object %>
+			<%= select_tag :postal_code, options_for_select(@states.sort.collect {|s| [s.postal_code]}) %>
 
 				<%=fields_for :intersection do |ff| %>
 					<%= ff.label :street_one %>

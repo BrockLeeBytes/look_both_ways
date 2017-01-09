@@ -17,11 +17,11 @@ class StatesController < ApplicationController
 		@state = State.find_by(postal_code: state_params )
 		@intersection = @state.intersections.build(intersection_params)
 		if @intersection.save
-			@state.cities.push(@intersection.city).uniq
-			@state.save
+			cities = @state.cities.push(@intersection.city)
+			@state.update_attributes(cities: cities.uniq)
 			redirect_to @intersection
 		else
-			render :new
+			redirect_to :back
 		end
 	end
 

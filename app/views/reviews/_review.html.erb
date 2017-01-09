@@ -1,0 +1,9 @@
+<li id="review-<%= review.id %>">
+	<span class='rating'><%= review.rating%>/5</span>
+	<span class='user'><%= link_to review.user.name, review.user %></span>
+
+	<span class='content'><%= review.body %></span>
+	<span class='timestamp'>
+		Created <%= time_ago_in_words(review.created_at) %> ago
+	</span>
+</li>

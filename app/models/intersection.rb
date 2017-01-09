@@ -35,4 +35,18 @@ class Intersection < ApplicationRecord
 		address_array = address.split(',')
 		self.city = address_array[1].strip
 	end
+
+	# Returns an average of all the ratings the intersection has recieved
+	def rating_avg
+		total = 0.0
+			
+		if self.reviews.length === 0
+			return total
+		else
+			self.reviews.each do |f|
+				total += f.rating
+			end
+		end
+		total / self.reviews.length
+	end
 end
