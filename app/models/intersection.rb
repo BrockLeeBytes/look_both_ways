@@ -30,10 +30,27 @@ class Intersection < ApplicationRecord
 		end
 	end
 
+	# Returns true if Google's api returns a good address
+	def good_address?(address_array)
+		if address_array.length === 4
+			true
+		else
+			false
+		end
+	end
+
+
 	def set_formatted_address(address)
-		self.formatted_address = address
 		address_array = address.split(',')
-		self.city = address_array[1].strip
+		if good_address?(address_array)
+			self.formatted_address = address
+			self.city = address_array[1].strip
+		else
+			address_array[0] = " #{address_array[0]}"
+			address_array.unshift("#{self.street_one} & #{self.street_two}")
+			self.city = address_array[1].strip
+			self.formatted_address = address_array.join(',')
+		end
 	end
 
 	# Returns an average of all the ratings the intersection has recieved
