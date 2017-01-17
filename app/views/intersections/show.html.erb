@@ -31,6 +31,8 @@
 	<h2><%= link_to 'Log in', login_path %> to leave a review!</h2>
 <% end %>
 
+
+
 <div class='col-md-8'>
 	<h3>
 	Reviews (<%= @intersection.reviews.count %>) 
@@ -40,3 +42,4 @@
 		<%= render @reviews %>
 	</ol>
 </div>
+

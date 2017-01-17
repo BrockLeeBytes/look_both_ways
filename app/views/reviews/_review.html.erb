@@ -1,9 +1,19 @@
 <li id="review-<%= review.id %>">
 	<span class='rating'><%= review.rating%>/5</span>
-	<span class='user'><%= link_to review.user.name, review.user %></span>
+	<span class='user'>
+		<% if params[:controller] == 'intersections'  %>
+			<%= link_to review.user.name, review.user %>
+		<% elsif params[:controller] == 'users' %>
+			<%= link_to review.intersection.formatted_address, review.intersection %>
+		<% end %>
+		
+	</span>
 
 	<span class='content'><%= review.body %></span>
 	<span class='timestamp'>
 		Created <%= time_ago_in_words(review.created_at) %> ago
 	</span>
+	<% if review.user_id == current_user.id %>
+			<%= link_to 'delete', review, method: :delete, data: { confirm: "You sure?"} %>
+	<% end %>
 </li>
