@@ -2,6 +2,6 @@
 <ul class='col-2'>
 <% @intersections.each do |f| %>
 	<% streets = f.formatted_address.split(',')[0]%>
-	<li><%= link_to streets, f %></li>
+	<li class='street-sign'><%= link_to streets, f %></li>
 <% end %>
 </ul>
