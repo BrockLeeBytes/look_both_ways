@@ -1,9 +1,20 @@
 
 
 
-<div class='jumbotron hero-unit img-responsive'>
-	<h1>Welcome to Rate This</h1>
-	<p>Log in to start rating stuff or if you don't have an account.</p>
-	<%= link_to 'Sign up', signup_path, class: 'btn btn-primary btn-lg'%>
+<div class='jumbotron'>
+	<h1>Welcome to Look Both Ways</h1>
+	<p>This is the place to review and rate any of your city's major or minor intersections.</p>
+	<div class='row'>
+		<div class="col-xs-8">
+			<% if !logged_in? %>
+				<%= link_to 'Sign up', signup_path, class: 'btn btn-primary btn-lg' %>
+				OR
+				<%= link_to 'Log in', login_path, class: 'btn btn-primary btn-lg' %>
+			<% end %>
+		</div>
+		<div class="col-xs-4">
+			<span class='population'> Population: <%= @population %></span>
+		</div>
+	</div>
 	
 </div>
