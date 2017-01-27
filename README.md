@@ -1,24 +1,15 @@
-# README
+# LOOK BOTH WAYS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This website, created with Ruby on Rails, allows users to add intersections to the database in order to review and rate them.
 
-Things you may want to cover:
+It uses Google's geocoding api to determine whether the intersection actually exists before being added.
 
-* Ruby version
+Features to be added include:
 
-* System dependencies
+* Better address formatting (There are some weaknesses due to reliance on the geocoding api)
 
-* Configuration
+* Better review display
 
-* Database creation
+* More user functionality (All users can do at this point is add intersections and reviews)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Test coverage (Currently at 0%.... I'm a fool I know)
