@@ -1,21 +1,8 @@
 class IntersectionsController < ApplicationController
   
-  def new
-  @intersection = Intersection.new
-  @states = State.all
-  end
 
   def index
     @intersections = Intersection.where(state_id: params[:id2], city: params[:id])
-  end
-
-  def create
-  	@intersection = Intersection.new(intersection_params)
-  	if @intersection.save
-  		redirect_to @intersection
-  	else
-  		redirect_to :back
-  	end
   end
 
   def show
@@ -34,18 +21,10 @@ class IntersectionsController < ApplicationController
 
   private
 
+    # Returns search string to be used in maps_url
   	def generate_search(st1, st2)
   		a = [st1, st2].sort
   		"#{a[0]} and #{a[1]}" 
   	end
 
-  	# Fix this method. Needs to use method above
-  	def intersection_params
-  		permitted = params.require(:intersection).permit(:street_one,
-  																										 :street_two,
-  																										 :city, :state)
-  		streets = generate_search(permitted[:street_one], permitted[:street_two]) 
-  		new_hash = { streets: streets}
-  		permitted.merge(new_hash)
-  	end
 end
