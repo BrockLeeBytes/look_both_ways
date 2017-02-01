@@ -21,7 +21,8 @@ class StatesController < ApplicationController
 			@state.update_attributes(cities: cities.uniq)
 			redirect_to @intersection
 		else
-			redirect_to :back
+			flash[:danger] = @intersection.errors.full_messages.to_sentence
+			redirect_back(fallback_location: :new)
 		end
 	end
 

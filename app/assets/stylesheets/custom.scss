@@ -43,7 +43,6 @@ html body {
   background-image: image-url('background.jpg');
   background-repeat: repeat;
   baground-position: center;
-  padding-top: 150px;
   background-size: contain;
   margin: auto;
 }
@@ -133,6 +132,7 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  color: black;
 }
 
 #error_explanation {

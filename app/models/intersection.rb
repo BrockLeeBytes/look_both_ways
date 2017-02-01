@@ -25,12 +25,23 @@ class Intersection < ApplicationRecord
 		status = data_hash['status']
 		if status != 'OK' || results['types'][0] != 'intersection'
 			errors.add(:intersection, 'must exist')
+		elsif !correct_state?(results['formatted_address'])
+			errors.add(:intersection, 'is in incorrect state')
 		else
 			set_formatted_address(results['formatted_address'])
 		end
 	end
 
-	# Returns true if Google's api returns a good address
+	def correct_state?(address)
+		address_array = address.split(',')
+		if self.state.postal_code == address_array[-1]
+			true
+		else
+			false
+		end
+	end
+
+	# Returns true if Google's api returns a full address
 	def good_address?(address_array)
 		if address_array.length === 4
 			true
