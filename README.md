@@ -1,5 +1,7 @@
 # LOOK BOTH WAYS
 
+[Live site](https://lookbothways.herokuapp.com)
+
 This website, created with Ruby on Rails, allows users to add intersections to the database in order to review and rate them.
 
 It uses Google's geocoding api to determine whether the intersection actually exists before being added.
