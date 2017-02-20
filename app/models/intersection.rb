@@ -34,7 +34,8 @@ class Intersection < ApplicationRecord
 
 	def correct_state?(address)
 		address_array = address.split(',')
-		if self.state.postal_code == address_array[-1]
+		post_zip = address_array[-2]
+		if self.state.postal_code == post_zip.split(' ')[0]
 			true
 		else
 			false
